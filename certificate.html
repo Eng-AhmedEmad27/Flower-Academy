@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>شهادة إتمام الدورة | Flower Academy</title>
+    <style>
+        body { background: #eeebf3; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Times New Roman', serif; }
+        .certificate-card { 
+            width: 800px; height: 550px; background: white; border: 15px solid #a074fa; padding: 40px; 
+            text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.1); position: relative;
+        }
+        .certificate-card::after { content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 2px solid #ea74ff; pointer-events: none; }
+        h1 { font-size: 50px; color: #1f1b2e; margin: 10px 0; }
+        .student-name { font-size: 45px; color: #ea74ff; margin: 20px 0; font-family: 'Brush Script MT', cursive; border-bottom: 2px solid #eee; display: inline-block; padding: 0 50px; }
+        .course-title { font-size: 32px; font-weight: bold; color: #333; margin: 20px 0; }
+        .footer { margin-top: 60px; display: flex; justify-content: space-around; }
+        .sign { border-top: 1px solid #333; width: 150px; padding-top: 5px; font-size: 14px; font-family: sans-serif; }
+        .print-btn { position: fixed; bottom: 20px; right: 20px; background: #a074fa; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="certificate-card">
+        <h2 style="color: #a074fa; letter-spacing: 5px;">شهادة إتمام</h2>
+        <p style="font-size: 20px;">نشهد أن المتدرب/ة:</p>
+        
+        <div class="student-name" id="displayStudent">تحميل الاسم...</div>
+        
+        <p style="font-size: 20px;">قد أكمل بنجاح دورة:</p>
+        
+        <!-- هنا يظهر اسم الكورس المجلوب من الذاكرة -->
+        <div class="course-title" id="displayCourse">تحميل اسم الكورس...</div>
+        
+        <p>من أكاديمية Flower Academy بكل جدارة واستحقاق.</p>
+
+        <div class="footer">
+            <div class="sign">توقيع الإدارة<br><strong>أكاديمية فلاور</strong></div>
+            <div class="sign">مدرب الدورة<br><strong>عمر خالد</strong></div>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">تحميل الشهادة (PDF)</button>
+
+    <script>
+        // تشغيل الكود بمجرد تحميل الصفحة
+        window.onload = function() {
+            // 1. جلب اسم الكورس من الذاكرة (localStorage)
+            const courseName = localStorage.getItem('completedCourseName');
+            if (courseName) {
+                document.getElementById('displayCourse').innerText = courseName;
+            } else {
+                document.getElementById('displayCourse').innerText = "دورة تدريبية متقدمة";
+            }
+
+            // 2. جلب اسم الطالب من الذاكرة
+            const studentName = localStorage.getItem('userName');
+            document.getElementById('displayStudent').innerText = studentName || "مبدع الأكاديمية";
+        };
+    </script>
+</body>
+</html>

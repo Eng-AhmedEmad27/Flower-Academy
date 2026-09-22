@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowerAcademy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- LOADING -->
+<div id="loader">Loading...</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+  <!-- LEFT: LOGO -->
+  <div class="logo">FlowerAcademy </div>
+
+  <!-- CENTER: LINKS -->
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <!-- RIGHT: ACTIONS -->
+  <div class="right-nav">
+
+    <a href="register.html" class="join-btn">Join Now</a>
+
+    <div class="icon profile-icon" onclick="toggleMenu()">👤</div>
+    <div class="icon" onclick="showNotif()">🔔</div>
+    <button class="icon-btn" id = "themeBtn" onclick="toggleTheme()">🌙</button>
+
+  </div>
+</nav>
+<!-- PROFILE DROPDOWN -->
+<div class="dropdown" id="dropdownMenu">
+  <a href="stu-dashboard.html">My Profile (STU)</a>
+  <a href="ins-dashboard.html">My Profile (INS)</a>
+  <a href="login.html">Log in</a>
+  <a href="register.html">Sign in</a>
+  <a href="#" onclick="logoutUser()" style="color: #ff4d4d; font-weight: bold;">Log out</a>
+</div>
+<!-- SEARCH -->
+<section class="search-section">
+  <input type="text" placeholder="Search for courses..." class="search-input">
+  <button class="search-btn">Search</button>
+</section>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>
+      <span class = "bloom">Bloom Your Skills 🌸</span> 
+  </h1>
+  <p>Start learning anytime, anywhere</p>
+  <a href="courses.html" class="btn">Explore Courses</a>
+</section>
+
+<!-- COURSES -->
+<section class="courses">
+  <h2>Popular Courses</h2>
+  <div class="course-container">
+    <div class="course-card">
+        <img src="images/javascript.jpg" alt="Advanced Programming">
+      <h3>Advanced Programming</h3>
+      <p class="desc">
+        Master Coding &  Problem Solving & Build Real Projects
+      </p>
+        <div class="stars">
+      ⭐️⭐️⭐️⭐️⭐️ <span>(4.9) TOP Rated </span>
+    </div>
+      <a href="view-course.html" class="btn">Enroll</a>
+    </div>
+<!-- UI/UX -->
+  <div class="course-card">
+    <img src="images/ui-ux-design.jpg" alt="UI/UX Design">
+    <h3>UI/UX Design</h3>
+
+    <p class="desc">
+      Design modern & user-friendly interfaces 🎨
+    </p>
+
+    <div class="stars">
+      ⭐️⭐️⭐️⭐️☆ <span>(4.8)</span>
+    </div>
+
+    <a href="view-course.html" class="btn">Enroll</a>
+  </div>
+
+</div>
+</section>
+<div class="faq">
+
+  <button class="faq-question" onclick="toggleAnswer()">
+    Why choose FlowerAcademy ❓
+  </button>
+
+  <p id="faq-answer" class="faq-answer">
+    Because we provide practical courses, real projects, and a simple learning experience that helps you grow faster 🚀
+  </p>
+
+  <p id="motiv" class="motiv">
+    Are you ready to be part of the strongest learning team? Let’s go 💜🔥
+  </p>
+</div>
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 FlowerAcademy. All rights reserved.</p>
+</footer>
+<!-- SCROLL TO TOP -->
+<button onclick="scrollTopBtn()" class="top-btn">⬆️</button>
+<!-- JS FILE -->
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses | FlowerAcademy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- LOADING -->
+  <div id="loader">Loading...</div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">FlowerAcademy</div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="right-nav">
+      <a href="register.html" class="join-btn">Join Now</a>
+      <div class="icon profile-icon" onclick="toggleMenu()">👤</div>
+      <div class="icon" onclick="showNotif()">🔔</div>
+      <button class="icon-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+    </div>
+  </nav>
+
+  <!-- PROFILE DROPDOWN -->
+  <div class="dropdown" id="dropdownMenu">
+    <a href="stu-dashboard.html">My Profile (STU)</a>
+    <a href="ins-dashboard.html">My Profile (INS)</a>
+    <a href="login.html">Log in</a>
+    <a href="register.html">Sign in</a>
+    <a href="#" onclick="logoutUser()" style="color: #ff4d4d; font-weight: bold;">Log out</a>
+  </div>
+
+  <!-- MY TASK 3: COURSE CATALOG -->
+  <section class="catalog-hero">
+    <p class="hero-badge">🌸 Learn smarter, grow faster</p>
+    <h1>Choose a course that makes your skills bloom.</h1>
+    <p>Search, filter, and save the course that matches your goal.</p>
+    <a href="#coursesContainer" class="btn">Explore Courses</a>
+  </section>
+
+  <section class="motivation-card">
+    <p>Small steps today can build a stronger career tomorrow. 💜</p>
+  </section>
+
+  <section class="catalog-controls">
+    <input type="text" id="searchInput" placeholder="Search courses...">
+
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+      <option value="Programming">Programming</option>
+      <option value="Design">Design</option>
+      <option value="Data">Data</option>
+      <option value="Marketing">Marketing</option>
+    </select>
+
+    <select id="levelFilter">
+      <option value="all">All Levels</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+
+    <select id="priceFilter">
+      <option value="all">All Prices</option>
+      <option value="free">Free</option>
+      <option value="paid">Paid</option>
+    </select>
+
+    <select id="sortFilter">
+      <option value="default">Sort By</option>
+      <option value="rating">Highest Rating</option>
+      <option value="priceLow">Price: Low to High</option>
+      <option value="priceHigh">Price: High to Low</option>
+    </select>
+
+    <button onclick="changeView('grid')">Grid</button>
+    <button onclick="changeView('list')">List</button>
+    <button onclick="resetFilters()">Reset</button>
+  </section>
+
+  <p id="resultCount" class="result-count"></p>
+
+  <section id="coursesContainer" class="courses-grid"></section>
+
+  <div class="pagination">
+    <button id="prevBtn">Previous</button>
+    <span id="pageNumber">1</span>
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 FlowerAcademy. All rights reserved.</p>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button onclick="scrollTopBtn()" class="top-btn">⬆️</button>
+
+  <!-- JS FILES -->
+  <script src="script.js"></script>
+  <script src="courses.js"></script>
+</body>
+</html>

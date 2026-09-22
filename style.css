@@ -1,0 +1,574 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+/* ===== GENERAL ===== */
+body {
+  line-height: 1.6;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(45deg, #ea74ff, #a074fa);
+  padding: 12px 20px;
+}
+body.dark .navbar {
+  background: #2a2a40;
+}
+
+body.dark .hero {
+  background: #2a2a40;
+  color: white;
+}
+.dropdown a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown a:hover {
+  background: #f3e8ff;
+}
+.bloom {
+  display: inline-block;
+  color: #a074fa;
+  font-weight: bold;
+  animation: pop 1.5s infinite;
+}
+
+/* حركة "فرقعة" */
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+    text-shadow: 0 0 10px #c084fc;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+/* LOGO */
+.logo {
+ font-size: 24px;
+ font-weight: bold;
+ color: white;
+}
+/* LINKS */
+.nav-links {
+display: flex;
+gap: 15px;
+list-style: none;
+}
+
+.nav-links a {
+color: white;
+text-decoration: none;
+font-size: 14px;
+ position: relative;
+}
+
+/* hover underline */
+.nav-links a::after {
+content: "";
+ position: absolute;
+ bottom: -3px;
+ left: 0;
+height: 2px;
+width: 0;
+ background: #fff;
+transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+ width: 100%;
+}
+
+/* RIGHT SIDE */
+.right-nav {
+ display: flex;
+  align-items: center;
+ gap: 12px;
+}
+
+/* JOIN BUTTON */
+.join-btn {
+ background: white;
+ color: #a074fa;
+ padding: 6px 12px;
+ border-radius: 20px;
+ text-decoration: none;
+ font-size: 13px;
+ transition: 0.3s;
+}
+
+.join-btn:hover {
+ background: #c084fc;
+ color: white;
+  box-shadow: 0 0 10px #c084fc;
+}
+
+/* ICONS */
+.icon {
+ cursor: pointer;
+ font-size: 18px;
+ color: white;
+}
+
+.icon-btn {
+ background: white;
+ border: none;
+ padding: 6px 10px;
+ border-radius: 50%;
+ cursor: pointer;
+}
+
+/* ===== SEARCH ===== */
+.search-section {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 10px;
+ padding: 30px 20px;
+ background: #f8f5ff;
+}
+
+.search-input {
+ width: 50%;
+ padding: 10px;
+ border: 2px solid #c084fc;
+ border-radius: 10px;
+ outline: none;
+}
+
+.search-btn {
+ padding: 10px 15px;
+ background: #a074fa;
+ color: white;
+ border: none;
+ border-radius: 10px;
+ cursor: pointer;
+}
+
+/* ===== HERO ===== */
+.hero {
+ text-align: center;
+ padding: 100px 20px;
+ background: linear-gradient(135deg, #f3e8ff, #d8b4fe);
+}
+
+.hero h1 {
+ font-size: 38px;
+ margin-bottom: 10px;
+}
+
+/* ===== COURSES ===== */
+.course-card {
+  width: 450px;
+  background: #f8f5ff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.4s;
+  text-align: center;
+  position: relative;
+}
+
+.course-card img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+}
+
+.course-card h3 {
+  margin: 10px 0;
+  color: #6c1065;
+}
+
+.desc {
+  padding: 0 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.stars {
+  margin: 10px 0;
+  font-size: 18px;
+  color: gold;
+  font-weight: bold;
+}
+
+.stars span {
+  color: #a074fa;
+  font-size: 14px;
+}
+
+.course-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(160, 116, 250, 0.4);
+}
+.course-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.courses h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* BUTTON */
+.btn {
+display: inline-block;
+padding: 10px 18px;
+ background: #a074fa;
+ color: white;
+ border-radius: 10px;
+border: none;
+ cursor: pointer;
+ text-decoration: none;
+ transition: 0.3s;
+}
+
+.btn:hover {
+ background: #c084fc;
+box-shadow: 0 0 12px #c084fc;
+}
+/* ===== FAQ CONTAINER ===== */
+.faq {
+  text-align: center;
+  margin: 50px 20px;
+}
+
+/* ===== السؤال ===== */
+.faq-question {
+  font-size: 22px;
+  font-weight: bold;
+  background: #a074fa;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.faq-question:hover {
+  background: #c084fc;
+  transform: scale(1.05);
+}
+
+/* ===== الإجابة ===== */
+.faq-answer {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #444;
+  line-height: 1.7;
+}
+/* ===== الجملة الحماسية ===== */
+.motiv {
+  display: none;
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #a074fa;
+  text-align: center;
+  animation: blinkGlow 1s infinite;
+}
+
+/* ===== وميض + glow ===== */
+@keyframes blinkGlow {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 8px #a074fa;
+  }
+  50% {
+    opacity: 0.5;
+    text-shadow: 0 0 20px #c084fc;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 8px #a074fa;
+  }
+}
+/* FOOTER */
+.footer {
+ text-align: center;
+ padding: 20px;
+background: #a074fa;
+color: white;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+ background: #1e1e2f;
+color: white;
+}
+
+body.dark .courses {
+  background: #2a2a40;
+}
+
+body.dark .course-card {
+background: #3a3a55;
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  min-width: 160px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+/* LOADING */
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #a074fa;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  z-index: 9999;
+}
+
+/* SCROLL BUTTON */
+.top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #eff5f7;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* ============================= */
+/* MY TASK 3: COURSE CATALOG PAGE */
+/* ============================= */
+
+.catalog-hero {
+  width: 85%;
+  margin: 30px auto;
+  padding: 55px 25px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff7ff, #efe0ff);
+  border-radius: 25px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: white;
+  color: #7e22ce;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.catalog-hero h1 {
+  color: #1f1b2e;
+  font-size: 42px;
+  max-width: 750px;
+  margin: 0 auto 15px;
+}
+
+.catalog-hero p {
+  color: #555;
+  margin-bottom: 18px;
+}
+
+.motivation-card {
+  width: 85%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 18px;
+  text-align: center;
+  background: #1f1b2e;
+  color: white;
+  border-radius: 18px;
+  font-weight: bold;
+}
+
+
+.catalog-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 25px;
+  background: #f8f5ff;
+}
+
+.catalog-controls input,
+.catalog-controls select,
+.catalog-controls button {
+  padding: 11px;
+  border: 1px solid #c084fc;
+  border-radius: 10px;
+  outline: none;
+}
+
+.catalog-controls button {
+  background: #a074fa;
+  color: white;
+  cursor: pointer;
+}
+
+.result-count {
+  text-align: center;
+  color: #7e22ce;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  padding: 25px 45px;
+}
+
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px 60px;
+}
+
+.catalog-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(126, 34, 206, 0.12);
+  transition: 0.3s;
+}
+
+.catalog-card:hover {
+  transform: translateY(-5px);
+}
+
+.catalog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.courses-list .catalog-card {
+  display: flex;
+}
+
+.courses-list .catalog-card img {
+  width: 260px;
+  height: 190px;
+  flex-shrink: 0;
+}
+
+.catalog-info {
+  padding: 18px;
+}
+
+.catalog-info h3 {
+  color: #7e22ce;
+  margin-bottom: 8px;
+}
+
+.catalog-info p {
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.catalog-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.wishlist-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background: #f3e8ff;
+  color: #7e22ce;
+  cursor: pointer;
+}
+
+.empty-message {
+  text-align: center;
+  color: #777;
+  font-size: 18px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 30px 0;
+}
+
+.pagination button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #a074fa;
+  color: white;
+  cursor: pointer;
+}
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Dark mode for my courses page */
+body.dark .catalog-hero,
+body.dark .catalog-controls {
+  background: #25253a;
+}
+
+body.dark .catalog-card {
+  background: #363653;
+  color: white;
+}
+
+body.dark .catalog-info p {
+  color: #ddd;
+}
+
+body.dark .catalog-info h3,
+body.dark .catalog-hero h1,
+body.dark .result-count {
+  color: #d8b4fe;
+}
+
+/* تنسيق خاص لزر الخروج داخل المنيو */
+.dropdown a[onclick="logoutUser()"]:hover {
+    background-color: rgba(255, 77, 77, 0.1) !important;
+    color: #ff4d4d !important;
+}
+
+body.dark .dropdown a[onclick="logoutUser()"] {
+    color: #ff6b6b;
+}
+

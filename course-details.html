@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details | FlowerAcademy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .details-wrapper { width: 85%; margin: 30px auto; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .intro-card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        
+        /* فيديو اليوتيوب */
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; margin-bottom: 25px; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        .course-brief { margin: 20px 0; padding: 20px; background: #fdfaff; border-left: 5px solid #a074fa; border-radius: 10px; }
+        
+        /* قائمة المحاضرات المحدثة */
+        .curriculum { margin-top: 30px; }
+        .lesson-item { 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px; background: #fff; border: 1px solid #eee; 
+            margin-bottom: 10px; border-radius: 12px; transition: 0.3s;
+        }
+        .lesson-item.locked { opacity: 0.6; cursor: not-allowed; background: #f9f9f9; }
+        .lesson-item.assignment { border-left: 4px solid #ea74ff; background: #fffbff; }
+        .lesson-item.quiz { background: #f4f0ff; font-weight: bold; }
+        .lock-icon { font-size: 18px; }
+
+        .sidebar-card { background: #1f1b2e; color: white; padding: 25px; border-radius: 20px; position: sticky; top: 20px; }
+        .price-tag { font-size: 32px; color: #ea74ff; font-weight: bold; margin-bottom: 20px; }
+        
+        body.dark .intro-card { background: #2a2a40; color: white; }
+        body.dark .lesson-item { background: #3a3a55; border-color: #444; color: white; }
+        
+        @media (max-width: 992px) { .details-wrapper { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav class="navbar" id="mainNavbar"></nav>
+
+<div class="details-wrapper">
+    <main>
+        <div class="intro-card">
+            <!-- فيديو تعريفي -->
+            <div class="video-container">
+                <iframe id="courseVideo" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Course Trailer" allowfullscreen></iframe>
+            </div>
+
+            <h1 id="courseTitle" style="color:#a074fa;">Course Title</h1>
+            
+            <div class="course-brief">
+                <h3>About this course 🌸</h3>
+                <p id="courseDescription">Loading description...</p>
+            </div>
+
+            <div class="curriculum">
+                <h3>Course Roadmap</h3>
+                
+                <!-- المحاضرة 1 مفتوحة -->
+                <div class="lesson-item">
+                    <span>1. Introduction & Basic Concepts (Free)</span>
+                    <span>▶️</span>
+                </div>
+
+                <!-- المحاضرة 2 (مقفولة) -->
+                <div class="lesson-item locked">
+                    <span>2. Advanced Techniques & Tools</span>
+                    <span class="lock-icon">🔒</span>
+                </div>
+
+                <!-- اسايمنت 1 (مقفول) -->
+                <div class="lesson-item locked assignment">
+                    <span>📝 Assignment #1: Practical Project</span>
+                    <span class="lock-icon">🔒</span>
+                </div>
+
+                <!-- المحاضرة 3 (مقفولة) -->
+                <div class="lesson-item locked">
+                    <span>3. Professional Workflow</span>
+                    <span class="lock-icon">🔒</span>
+                </div>
+
+                <!-- اسايمنت 2 (مقفول) -->
+                <div class="lesson-item locked assignment">
+                    <span>📝 Assignment #2: Final Submission</span>
+                    <span class="lock-icon">🔒</span>
+                </div>
+
+                <!-- كويز نهائي (مقفول) -->
+                <div class="lesson-item locked quiz">
+                    <span>🏆 Final Comprehensive Quiz</span>
+                    <span class="lock-icon">🔒</span>
+                </div>
+
+                <!-- الشهادة (مقفول) -->
+                <div class="lesson-item locked">
+                    <span>🎓 Get Your Certificate</span>
+                    <span class="lock-icon">🔒</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+        <div class="sidebar-card">
+            <div class="price-tag" id="coursePrice">0 EGP</div>
+            <ul style="list-style: none; margin-bottom: 20px; font-size: 14px;">
+                <li>✅ 3 Intensive Lectures</li>
+                <li>✅ 2 Hands-on Assignments</li>
+                <li>✅ Final Quiz & Certificate</li>
+                <li>✅ Lifetime Access</li>
+            </ul>
+            <button class="btn" style="width: 100%; padding: 15px;" onclick="handleEnroll()">Enroll & Start Learning</button>
+        </div>
+    </aside>
+</div>
+
+<footer class="footer"></footer>
+
+<script src="courses.js"></script>
+<script src="details.js"></script>
+
+</body>
+</html>

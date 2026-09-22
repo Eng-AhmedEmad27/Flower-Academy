@@ -1,0 +1,196 @@
+/* تصفير الهوامش لضمان عدم وجود Gap علوي */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9f7ff; /* خلفية هادية مائلة للموف */
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 0; /* نفس ارتفاع الناف بار */
+}
+
+.STD-dashboard-container {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 25px;
+}
+
+.STD-dashboard-sidebar {
+    width: 260px;
+    background: white;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    height: fit-content;
+}
+
+.STD-user-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(45deg, #c364fa, #7b2cbf);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto 15px;
+}
+
+.STD-dashboard-menu {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.STD-dashboard-menu li a {
+    text-decoration: none;
+    color: #666;
+    padding: 12px 15px;
+    display: block;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.STD-dashboard-menu li.active a, .STD-dashboard-menu a:hover {
+    background: #f3e8ff;
+    color: #c364fa;
+    font-weight: bold;
+}
+
+/* كروت الإحصائيات الموسطة */
+.STD-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.STD-stat-card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    border-bottom: 4px solid #c364fa;
+}
+
+.STD-stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #333;
+    margin-top: 5px;
+}
+
+.btn-browse-courses {
+    background: #c364fa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* تنسيق الشهادات */
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.cert-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px dashed #c364fa;
+}
+
+.cert-icon { font-size: 40px; margin-bottom: 10px; }
+
+.btn-download {
+    background: #c364fa;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* تنسيق الإعدادات */
+.settings-form {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.settings-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.btn-save {
+    background: #c364fa;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Dark Mode */
+
+body.dark {
+    background-color: #0f0f23;
+    color: #e0e0e0;
+}
+body.dark .STD-dashboard-sidebar {
+    background: #1e1e2f;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+body.dark .STD-dashboard-menu li a {
+    color: #b0b0b0;
+}
+body.dark .STD-dashboard-menu li.active a, body.dark .STD-dashboard-menu a:hover {
+    background: #3a2a5a;
+    color: #c364fa;
+}
+body.dark .STD-stat-card {
+    background: #2a2a3e;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-bottom: 4px solid #c364fa;
+}
+body.dark .cert-card {
+    background: #2a2a3e;
+    border: 1px dashed #c364fa;
+}
+body.dark .settings-form {
+    background: #2a2a3e;
+}
+body.dark .btn-browse-courses, body.dark .btn-download, body.dark .btn-save {
+    background: #c364fa;
+    color: white;
+}
+body.dark .STD-user-icon {
+    background: linear-gradient(45deg, #c364fa, #7b2cbf);
+    color: white;
+}
+body.dark .STD-stat-number {
+    color: #e0e0e0;
+}
+

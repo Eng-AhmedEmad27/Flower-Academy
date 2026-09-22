@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - FlowerAcademy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ea74ff, #a074fa);
+            padding: 12px 20px;
+        }
+
+        .logo {
+            position: absolute;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-section {
+            min-height: calc(100vh - 55px);
+            background: linear-gradient(135deg, #f4eaff, #d8b8ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .auth-box {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(122, 72, 190, 0.18);
+            text-align: center;
+        }
+
+        .auth-box h2 {
+            color: #8b5cf6;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .auth-subtitle {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            color: #4b006e;
+            margin-bottom: 7px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid #c084fc;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .input-group input:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 6px rgba(139, 92, 246, 0.3);
+        }
+
+        .password-box {
+            display: flex;
+            gap: 8px;
+        }
+
+        .password-box input {
+            flex: 1;
+        }
+
+        .toggle-password {
+            border: none;
+            background: #8b5cf6;
+            color: white;
+            padding: 0 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .toggle-password:hover {
+            background: #6d28d9;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 13px;
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 8px;
+        }
+
+        .auth-btn:hover {
+            background: #6d28d9;
+        }
+
+        .error {
+            color: #e11d48;
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .success {
+            color: #16a34a;
+            font-size: 14px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .center-error {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .switch-auth {
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .switch-auth a {
+            color: #8b5cf6;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .switch-auth a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo {
+                position: static;
+            }
+
+            .auth-box {
+                padding: 25px;
+            }
+
+            .password-box {
+                flex-direction: column;
+            }
+
+            .toggle-password {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2 class="logo">FlowerAcademy</h2>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+
+    <section class="auth-section">
+        <div class="auth-box">
+            <h2>Welcome Back 🌷</h2>
+            <p class="auth-subtitle">Login to continue your learning journey</p>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" />
+                    <small class="error" id="loginEmailError"></small>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="password-box">
+                        <input type="password" id="loginPassword" placeholder="Enter password" />
+                        <button type="button" class="toggle-password"
+                            onclick="togglePassword('loginPassword', this)">Show</button>
+                    </div>
+                    <small class="error" id="loginPasswordError"></small>
+                </div>
+
+                <button type="submit" class="auth-btn">Login</button>
+
+                <p class="success" id="loginSuccess"></p>
+                <p class="error center-error" id="loginError"></p>
+
+                <p class="switch-auth">
+                    Don't have an account?
+                    <a href="register.html">Register</a>
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <script src="auth.js"></script>
+</body>
+
+</html>

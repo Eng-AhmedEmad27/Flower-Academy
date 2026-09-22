@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - FlowerAcademy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="student-dashboard.css">
+</head>
+<body>
+
+    <!-- الـ Navbar الموحدة (نفس كود المدرب تماماً لضمان الثبات) -->
+    <nav class="navbar">
+        <div class="logo">FlowerAcademy</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="right-nav">
+            <div class="icon profile-icon" onclick="toggleMenu()">👤</div>
+            <div class="icon" onclick="showNotif()">🔔</div>
+            <button class="icon-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+    <div class="dropdown" id="dropdownMenu">
+        <a href="stu-dashboard.html">My Profile (STU)</a>
+        <a href="ins-dashboard.html">My Profile (INS)</a>
+        <a href="login.html">Log in</a>
+        <a href="register.html">Sign in</a>
+        <a href="#" onclick="logoutUser()" style="color: #ff4d4d; font-weight: bold;">Log out</a>
+    </div>
+
+    <div class="STD-dashboard-container">
+        <!-- السايد بار الخاص بالطالب -->
+        <aside class="STD-dashboard-sidebar">
+            <div class="STD-dashboard-profile">
+                <div class="STD-user-icon">MN</div>
+                <h3>Mohamed Nasser</h3>
+                <p>Student</p>
+            </div>
+            <ul class="STD-dashboard-menu">
+                <li class="active"><a href="#">🎯 My Progress</a></li>
+                <li><a href="#">📖 My Courses</a></li>
+                <li><a href="#">🏆 Certificates</a></li>
+                <li><a href="#">⚙️ Settings</a></li>
+            </ul>
+        </aside>
+
+                <!-- المحتوى الرئيسي -->
+                <!-- استبدل محتوى الـ <main> بهذا الكود -->
+        <main class="STD-dashboard-content">
+            
+            <!-- قسم التقدم الدراسي (الأصلي) -->
+            <div id="tab-progress" class="dashboard-tab">
+                <h2>Learning Progress</h2>
+                <div class="STD-stats-grid">
+                    <div class="STD-stat-card"><span>Enrolled</span><span class="STD-stat-number">12</span></div>
+                    <div class="STD-stat-card"><span>Hours</span><span class="STD-stat-number">45h</span></div>
+                    <div class="STD-stat-card"><span>Tasks</span><span class="STD-stat-number">85%</span></div>
+                </div>
+                <div id="std-courses-container"></div>
+            </div>
+
+            <!-- قسم الكورسات المشترك بها -->
+            <div id="tab-enrolled" class="dashboard-tab" style="display:none;">
+                <h2>My Enrolled Courses</h2>
+                <div class="enrolled-list" id="enrolled-list-content">
+                    <!-- سيتم ملئه بالجافا سكريبت -->
+                </div>
+            </div>
+
+            <!-- قسم الشهادات -->
+            <div id="tab-certificates" class="dashboard-tab" style="display:none;">
+                <h2>My Certificates</h2>
+                <div class="certificates-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon">🎓</div>
+                        <h4>Frontend Specialist</h4>
+                        <p>Issued: May 2026</p>
+                        <button class="btn-download">Download PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم الإعدادات -->
+            <div id="tab-settings" class="dashboard-tab" style="display:none;">
+                <h2>Account Settings</h2>
+                <form class="settings-form">
+                    <label>Full Name</label>
+                    <input type="text" value="Mohamed Nasser">
+                    <label>Email</label>
+                    <input type="email" value="mohamed.nasser@example.com">
+                    <button type="button" class="btn-save">Save Changes</button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="student-dashboard.js"></script>
+</body>
+</html>

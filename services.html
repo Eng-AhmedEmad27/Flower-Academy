@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - FlowerAcademy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background-color: #f9f7ff; transition: 0.3s; }
+        body.dark { background-color: #0b0b0d !important; color: white; }
+
+        .services-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 20px;
+            padding: 0 20px;
+            min-height: 500px;
+        }
+
+        /* القائمة الجانبية */
+        .services-sidebar {
+            width: 300px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(160, 116, 250, 0.05);
+        }
+        body.dark .services-sidebar { background: #242526 !important; }
+
+        .services-sidebar h2 {
+            color: #a074fa;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-left: 10px;
+        }
+
+        .service-menu { list-style: none; }
+        .service-menu li {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #555;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        body.dark .service-menu li { color: #b0b3b8; }
+
+        .service-menu li:hover { background: #f3e8ff; color: #a074fa; }
+        .service-menu li.active { background: #a074fa; color: white; }
+        body.dark .service-menu li.active { background: #3d1a5a; color: #c364fa; }
+
+        /* منطقة المحتوى */
+        .services-content {
+            flex: 1;
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(160, 116, 250, 0.05);
+        }
+        body.dark .services-content { background: #242526 !important; }
+
+        .tab-panel { display: none; animation: fadeIn 0.4s; }
+        .tab-panel.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ستايل بسيط للـ FAQ داخل الصفحة */
+        .faq-item { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        body.dark .faq-item { border-bottom-color: #3a3b3c; }
+
+        /* ستايل الـ Discuss Room */
+        .chat-box { background: #f9f7ff; padding: 15px; border-radius: 12px; height: 200px; margin-bottom: 10px; }
+        body.dark .chat-box { background: #1a1b1c; }
+                /* تنسيق حاوية الشات */
+        .chat-container {
+            height: 350px;
+            background: #fdfbff;
+            border: 1px solid #f3e8ff;
+            border-radius: 18px;
+            padding: 20px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        body.dark .chat-container {
+            background: #1a1b1c !important;
+            border-color: #333;
+        }
+
+        /* ستايل الرسايل */
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .message.sent {
+            align-self: flex-end;
+            background: #a074fa;
+            color: white;
+            border-bottom-right-radius: 2px;
+        }
+
+        .message.received {
+            align-self: flex-start;
+            background: #f3e8ff;
+            color: #333;
+            border-bottom-left-radius: 2px;
+        }
+
+        body.dark .message.received {
+            background: #3a3b3c;
+            color: white;
+        }
+
+        .message.system {
+            align-self: center;
+            background: none;
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        /* منطقة الإدخال */
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        body.dark .chat-input-area input {
+            background: #3a3b3c;
+            border-color: #444;
+            color: white;
+        }
+
+        .chat-input-area input:focus { border-color: #a074fa; }
+
+        #sendBtn {
+            background: #a074fa;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #sendBtn:hover { background: #ea74ff; }
+
+        /* تنسيق شبكة الإحصائيات */
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-mini-card {
+            background: #fdfbff;
+            padding: 20px;
+            border-radius: 18px; /* حواف دائرية ناعمة */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #f3e8ff;
+            transition: 0.3s;
+        }
+
+        body.dark .stat-mini-card {
+            background: #1a1b1c !important;
+            border-color: #333;
+        }
+
+        .stat-icon { font-size: 24px; }
+        .stat-mini-card h4 { font-size: 0.85rem; color: #777; }
+        .stat-mini-card p { font-size: 1.2rem; font-weight: bold; color: #a074fa; }
+
+        /* تنسيق الجدول */
+        .admin-section-table {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f3e8ff;
+        }
+
+        body.dark .admin-table th, body.dark .admin-table td {
+            border-bottom-color: #333;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .status-badge.active { background: #e8f5e9; color: #2e7d32; }
+        .status-badge.pending { background: #fff3e0; color: #ef6c00; }
+
+        .edit-btn {
+            background: #f3e8ff;
+            color: #a074fa;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .edit-btn:hover { background: #a074fa; color: white; }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">FlowerAcademy</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+        </ul>
+        <div class="right-nav">
+            <button class="icon-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <div class="services-container">
+        <aside class="services-sidebar">
+            <h2>Academy Services 🛠️</h2>
+            <ul class="service-menu">
+                <li class="active" onclick="openService(event, 'admin')">🛡️ Admin Panel</li>
+                <li onclick="openService(event, 'discuss')">💬 Discuss Room</li>
+                <li onclick="openService(event, 'faqs')">❓ FAQs Center</li>
+            </ul>
+        </aside>
+
+        <main class="services-content">
+            <div id="admin" class="tab-panel active">
+                <div class="admin-header">
+                    <h3>Admin Command Center 🛡️</h3>
+                    <p>Monitor your academy's growth and manage users.</p>
+                </div>
+
+                <div class="admin-stats-grid">
+                    <div class="stat-mini-card">
+                        <span class="stat-icon">👥</span>
+                        <div>
+                            <h4>Total Students</h4>
+                            <p>1,254</p>
+                        </div>
+                    </div>
+                    <div class="stat-mini-card">
+                        <span class="stat-icon">📚</span>
+                        <div>
+                            <h4>Active Courses</h4>
+                            <p>42</p>
+                        </div>
+                    </div>
+                    <div class="stat-mini-card">
+                        <span class="stat-icon">💰</span>
+                        <div>
+                            <h4>Monthly Revenue</h4>
+                            <p>$8,400</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-section-table">
+                    <h4>Recent User Registrations</h4>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dr.Ahmed Hassan</td>
+                                <td>Instructor</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="edit-btn">Manage</button></td>
+                            </tr>
+                            <tr>
+                                <td>Mohamed Nasser</td>
+                                <td>Student</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td><button class="edit-btn">Manage</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="discuss" class="tab-panel">
+                <div class="discuss-header">
+                    <h3>Community Discuss Room 💬</h3>
+                    <p>Connect with students around the world</p>
+                </div>
+
+                <div class="chat-container" id="chatContainer">
+                    <div class="message system">
+                        <span>Welcome to FlowerAcademy public room! 🌸</span>
+                    </div>
+                    </div>
+
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="Write your message here...">
+                    <button id="sendBtn" onclick="sendMessage()">Send 🚀</button>
+                </div>
+            </div>
+
+            <div id="faqs" class="tab-panel">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <h4>How can I get my certificate?</h4>
+                    <p>You can download it from your dashboard once you complete 100% of the course.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Is there a refund policy?</h4>
+                    <p>Yes, within 14 days of enrollment if you haven't started the lessons.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script> <script src="services.js"></script>
+</body>
+</html>

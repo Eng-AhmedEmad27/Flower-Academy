@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Dashboard - FlowerAcademy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* التنسيقات الأساسية */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #f9f7ff;
+            font-family: 'Segoe UI', sans-serif;
+            transition: 0.3s;
+        }
+
+        /* تعديلات الـ Dark Mode للرمادي الغامق والحواف الناعمة */
+        body.dark { background-color: #0b0b0d !important; color: white; }
+        
+        .INS-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            gap: 25px;
+        }
+
+        /* القائمة الجانبية */
+        .INS-sidebar {
+            width: 280px;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px; /* حواف ناعمة */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            height: fit-content;
+        }
+        body.dark .INS-sidebar { background-color: #242526 !important; border: none; }
+
+        .INS-profile { text-align: center; margin-bottom: 30px; }
+        .INS-avatar {
+            width: 80px; height: 80px;
+            background: linear-gradient(45deg, #ea74ff, #a074fa);
+            color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; margin: 0 auto 15px;
+        }
+
+        .INS-menu { list-style: none; }
+        .INS-menu li { margin-bottom: 10px; }
+        .INS-menu a {
+            text-decoration: none; color: #666;
+            padding: 12px 15px; display: block;
+            border-radius: 12px; transition: 0.3s;
+        }
+        .INS-menu li.active a, .INS-menu a:hover {
+            background: #f3e8ff; color: #a074fa; font-weight: bold;
+        }
+        body.dark .INS-menu a { color: #b0b3b8; }
+        body.dark .INS-menu li.active a { background: #3d1a5a !important; color: #c364fa; }
+
+        /* المحتوى الرئيسي */
+        .INS-main { flex: 1; }
+        .INS-header {
+            display: flex; justify-content: space-between;
+            align-items: center; margin-bottom: 30px;
+        }
+
+        /* كروت الإحصائيات (Features خاصة بالمحاضر) */
+        .INS-stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; margin-bottom: 30px;
+        }
+        .INS-card {
+            background: white; padding: 25px;
+            border-radius: 20px; text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-bottom: 4px solid #a074fa;
+        }
+        body.dark .INS-card { background-color: #242526 !important; border-bottom-color: #c364fa; }
+        .INS-card h3 { font-size: 24px; margin-top: 10px; }
+        .INS-card p { color: #777; font-size: 14px; }
+        body.dark .INS-card p { color: #b0b3b8; }
+
+        /* قسم إدارة الكورسات */
+        .INS-section {
+            background: white; padding: 25px;
+            border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        body.dark .INS-section { background-color: #242526 !important; }
+
+        .course-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px; border-bottom: 1px solid #eee;
+        }
+        body.dark .course-row { border-bottom-color: #3a3b3c; }
+
+        .btn-create {
+            background: #a074fa; color: white; border: none;
+            padding: 12px 25px; border-radius: 12px;
+            cursor: pointer; font-weight: bold; transition: 0.3s;
+        }
+        .btn-create:hover { background: #ea74ff; transform: scale(1.05); }
+
+        /* تنسيق الصفوف داخل القوائم */
+        .course-row, .student-row, .earning-row {
+            transition: 0.2s;
+        }
+
+        body.dark .course-row, body.dark div[style*="border-bottom"] {
+            border-bottom-color: #3a3b3c !important;
+        }
+
+        .ins-tab-content h3 {
+            margin-bottom: 20px;
+            color: #a074fa;
+        }
+
+        body.dark .ins-tab-content h3 {
+            color: #c364fa;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">FlowerAcademy</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="right-nav">
+            <div class="icon profile-icon" onclick="toggleMenu()">👤</div>
+            <button class="icon-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+    <div class="dropdown" id="dropdownMenu">
+        <a href="stu-dashboard.html">My Profile (STU)</a>
+        <a href="ins-dashboard.html">My Profile (INS)</a>
+        <a href="login.html">Log in</a>
+        <a href="register.html">Sign in</a>
+        <a href="#" onclick="logoutUser()" style="color: #ff4d4d; font-weight: bold;">Log out</a>
+    </div>
+
+    <div class="INS-container">
+        <aside class="INS-sidebar">
+            <div class="INS-profile">
+                <div class="INS-avatar">AH</div>
+                <h3>Dr. Ahmed Hassan</h3>
+                <p>Senior Instructor</p>
+            </div>
+            <ul class="INS-menu">
+                <li class="active"><a href="#" onclick="showTab('dashboard')">📊 Dashboard</a></li>
+                <li><a href="#" onclick="showTab('my-courses')">📚 My Courses</a></li>
+                <li><a href="#" onclick="showTab('students')">👥 Students</a></li>
+                <li><a href="#" onclick="showTab('earnings')">💰 Earnings</a></li>
+            </ul>
+        </aside>
+
+       <main class="INS-main">
+            <div class="INS-header">
+                <h2 id="tab-title">Instructor Dashboard 🚀</h2>
+                <button class="btn-create" id="action-btn">+ Create New Course</button>
+            </div>
+
+            <div id="tab-dashboard" class="ins-tab-content">
+                <div class="INS-stats-grid">
+                    <div class="INS-card"><p>Total Revenue</p><h3>$4,250</h3></div>
+                    <div class="INS-card"><p>Active Students</p><h3>1,120</h3></div>
+                    <div class="INS-card"><p>Course Ratings</p><h3>4.9 ⭐</h3></div>
+                </div>
+                <div class="INS-section">
+                    <h3>Recent Activity</h3>
+                    <div id="recent-activity-container">
+                        <p>No recent activity to show.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-my-courses" class="ins-tab-content" style="display:none;">
+                <div class="INS-section">
+                    <h3>All My Courses</h3>
+                    <div id="ins-courses-container"></div>
+                </div>
+            </div>
+
+            <div id="tab-students" class="ins-tab-content" style="display:none;">
+                <div class="INS-section">
+                    <h3>Enrolled Students List</h3>
+                    <div id="students-list-container"></div>
+                </div>
+            </div>
+
+            <div id="tab-earnings" class="ins-tab-content" style="display:none;">
+                <div class="INS-stats-grid">
+                    <div class="INS-card"><p>This Month</p><h3>$850</h3></div>
+                    <div class="INS-card"><p>Pending Payout</p><h3>$1,200</h3></div>
+                    <div class="INS-card"><p>Total Withdrawn</p><h3>$3,000</h3></div>
+                </div>
+                <div class="INS-section">
+                    <h3>Transaction History</h3>
+                    <div id="earnings-history-container"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="ins-dashboard.js"></script>
+</body>
+</html>

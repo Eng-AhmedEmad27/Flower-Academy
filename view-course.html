@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Room | FlowerAcademy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .learning-container { display: grid; grid-template-columns: 3fr 1fr; height: 100vh; background: #f8f9fa; }
+        
+        /* منطقة الفيديو */
+        .video-section { padding: 20px; background: #000; display: flex; flex-direction: column; justify-content: center; }
+        .video-wrapper { width: 100%; aspect-ratio: 16/9; background: #222; border-radius: 15px; overflow: hidden; }
+        .video-wrapper iframe { width: 100%; height: 100%; border: none; }
+
+        /* القائمة الجانبية للدروس */
+        .curriculum-sidebar { background: white; border-left: 1px solid #ddd; overflow-y: auto; padding: 20px; }
+        .step-item { 
+            padding: 15px; border-radius: 10px; margin-bottom: 10px; 
+            background: #fdfaff; border: 1px solid #eee; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: 0.3s;
+        }
+        .step-item.locked { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+        .step-item.active { border-color: #a074fa; background: #f4f0ff; box-shadow: 0 4px 12px rgba(160,116,250,0.1); }
+        .step-item.completed { border-left: 5px solid #2ecc71; }
+
+        /* منطقة الأسايمنت */
+        .assignment-box { 
+            margin-top: 20px; padding: 20px; background: #fff3ff; 
+            border-radius: 12px; border: 1px dashed #ea74ff; display: none; 
+        }
+        .upload-btn { background: #ea74ff; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+
+        @media (max-width: 992px) { .learning-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="learning-container">
+    <!-- اليمين: مشغل الفيديو والوصف -->
+    <section class="video-section">
+        <div class="video-wrapper">
+            <iframe id="mainPlayer" src="" allowfullscreen></iframe>
+        </div>
+        <div id="assignmentArea" class="assignment-box">
+            <h3>📝 Upload Assignment</h3>
+            <p>Please upload your project file (PDF or ZIP) to unlock the next lesson.</p>
+            <input type="file" id="fileInput">
+            <button class="upload-btn" onclick="submitAssignment()">Submit Project</button>
+        </div>
+    </section>
+
+    <!-- الشمال: قائمة الدروس والتطور -->
+    <aside class="curriculum-sidebar">
+        <h2 style="color: #a074fa; margin-bottom: 20px;">Course Map 🌸</h2>
+        
+        <div id="stepsList">
+            <!-- الخطوات هيتم إنتاجها بالجافا سكريبت -->
+        </div>
+    </aside>
+</div>
+
+<script src="courses.js"></script>
+<script src="learning.js"></script>
+</body>
+</html>

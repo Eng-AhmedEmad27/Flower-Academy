@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FlowerAcademy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* تصميم قسم التعريف بالموقع */
+        .about-hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f3e8ff, #d8b4fe);
+            border-radius: 0 0 50px 50px;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: -40px auto 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(160, 116, 250, 0.1);
+            text-align: center;
+        }
+
+        .about-content h2 {
+            color: #a074fa;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .about-content p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* تصميم قسم فريق العمل (الطلاب الستة) */
+        .team-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .student-card {
+            background: #f8f5ff;
+            padding: 30px;
+            border-radius: 20px;
+            transition: 0.3s;
+            border-bottom: 4px solid #a074fa;
+        }
+
+        .student-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(160, 116, 250, 0.2);
+        }
+
+        .student-icon {
+            width: 60px;
+            height: 60px;
+            background: #a074fa;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+        }
+
+        .student-card h3 {
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        .student-card p {
+            color: #7e22ce;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* دعم الـ Dark Mode */
+        body.dark .about-hero { background: #2a2a40; color: white; }
+        body.dark .about-content { background: #242526; color: white; }
+        body.dark .about-content p { color: #ccc; }
+        body.dark .student-card { background: #242526; color: white; }
+        body.dark .student-card h3 { color: white; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">FlowerAcademy</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="right-nav">
+            <div class="icon profile-icon" onclick="toggleMenu()">👤</div>
+            <div class="icon" onclick="showNotif()">🔔</div>
+            <button class="icon-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+    <div class="dropdown" id="dropdownMenu">
+        <a href="stu-dashboard.html">My Profile (STU)</a>
+        <a href="ins-dashboard.html">My Profile (INS)</a>
+        <a href="login.html">Log in</a>
+        <a href="register.html">Sign in</a>
+        <a href="#" onclick="logoutUser()" style="color: #ff4d4d; font-weight: bold;">Log out</a>
+    </div>
+
+
+    <section class="about-hero">
+        <h1>Our Vision 🌸</h1>
+        <p>Growing knowledge, one petal at a time.</p>
+    </section>
+
+    <section class="about-content">
+        <h2>What is FlowerAcademy?</h2>
+        <p>
+            FlowerAcademy is a leading e-learning platform dedicated to providing high-quality 
+            courses in technology, design, and business. Our mission is to make learning 
+            accessible, fun, and impactful for students around the world.
+        </p>
+    </section>
+
+    <section class="team-section">
+        <h2>Meet the Developers</h2>
+        <div class="team-grid">
+            <div class="student-card">
+                <div class="student-icon">👨‍💻</div>
+                <h3>Alaa Nasser</h3>
+                <p>ID: 931240039</p>
+            </div>
+            <div class="student-card">
+                <div class="student-icon">👨‍💻</div>
+                <h3>Ahmed Emad</h3>
+                <p>ID: 933240008</p>
+            </div>
+            <div class="student-card">
+                <div class="student-icon">👨‍💻</div>
+                <h3>Eman Emad</h3>
+                <p>ID: 932240028</p>
+            </div>
+            <div class="student-card">
+                <div class="student-icon">👨‍💻</div>
+                <h3>Ahmed Hatem</h3>
+                <p>ID: 932240005</p>
+            </div>
+            <div class="student-card">
+                <div class="student-icon">👨‍💻</div>
+                <h3>Esraa Sabry</h3>
+                <p>ID: 931240030</p>
+            </div>
+            <div class="student-card">
+                <div class="student-icon">👨‍💻</div>
+                <h3>Omar Mo'men</h3>
+                <p>ID: 932240126</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 FlowerAcademy. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

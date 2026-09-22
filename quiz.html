@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>الاختبار النهائي | Flower Academy</title>
+    <style>
+        body { font-family: sans-serif; background: #f9f6ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .quiz-container { max-width: 600px; width: 90%; background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+        .option-btn { width: 100%; padding: 15px; border: 2px solid #f0eaff; border-radius: 12px; cursor: pointer; margin-top: 10px; background: white; font-size: 16px; transition: 0.3s; }
+        .option-btn:hover { border-color: #a074fa; }
+        .option-btn.selected { background: #a074fa; color: white; border-color: #a074fa; }
+        .action-btn { background: #a074fa; color: white; border: none; padding: 15px 40px; border-radius: 50px; cursor: pointer; margin-top: 20px; font-weight: bold; font-size: 18px; }
+        .result-screen { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <h2 id="qText" style="color: #a074fa;">جاري تحميل السؤال...</h2>
+        <div id="optionsBox"></div>
+        <button class="action-btn" onclick="submitAnswer()">السؤال التالي</button>
+    </div>
+
+    <div id="result-box" class="result-screen">
+        <h2 id="statusTitle">نتيجة الاختبار</h2>
+        <div style="font-size: 48px; color: #ea74ff; margin: 20px;" id="finalScore">0/0</div>
+        <p id="feedbackText" style="font-size: 20px;"></p>
+        <div id="actionArea"></div>
+    </div>
+</div>
+
+<!-- تأكدي أن ملف courses.js موجود في نفس المجلد -->
+<script src="courses.js"></script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseId = urlParams.get('id');
+
+    const quizData = [
+        { q: "ما هي الألوان الأساسية لهوية Flower Academy؟", a: ["أحمر وأصفر", "بنفسجي ووردي", "أزرق وأبيض"], correct: 1 },
+        { q: "هل يجب إتمام كافة الدروس لدخول الاختبار؟", a: ["نعم", "لا"], correct: 0 },
+        { q: "ما هي قيمة التعلم في الأكاديمية؟", a: ["الإبداع", "الملل", "التعقيد"], correct: 0 }
+    ];
+
+    let currentQ = 0; let score = 0; let selectedIdx = null;
+
+    function loadQuestion() {
+        selectedIdx = null;
+        const q = quizData[currentQ];
+        document.getElementById("qText").innerText = q.q;
+        const box = document.getElementById("optionsBox");
+        box.innerHTML = "";
+        q.a.forEach((opt, i) => {
+            const btn = document.createElement("button");
+            btn.className = "option-btn"; btn.innerText = opt;
+            btn.onclick = () => {
+                document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected'); selectedIdx = i;
+            };
+            box.appendChild(btn);
+        });
+    }
+
+    function submitAnswer() {
+        if (selectedIdx === null) return alert("الرجاء اختيار إجابة!");
+        if (selectedIdx === quizData[currentQ].correct) score++;
+        currentQ++;
+        if (currentQ < quizData.length) { loadQuestion(); } else { showResults(); }
+    }
+
+    function showResults() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("result-box").style.display = "block";
+        document.getElementById("finalScore").innerText = score + " / " + quizData.length;
+        
+        const feedback = document.getElementById("feedbackText");
+        const area = document.getElementById("actionArea");
+
+        if (score >= 2) {
+            // حفظ اسم الكورس في الذاكرة قبل الانتقال
+            if (typeof courses !== 'undefined' && courseId) {
+                const currentCourse = courses.find(c => c.id == parseInt(courseId));
+                if (currentCourse) {
+                    localStorage.setItem('completedCourseName', currentCourse.title);
+                }
+            }
+
+            feedback.innerHTML = "<span style='color:green;'>تهانينا! لقد اجتزت الاختبار بنجاح. 🌸</span>";
+            area.innerHTML = `<button class="action-btn" onclick="window.location.href='certificate.html'">استلم شهادتك الآن 🎓</button>`;
+        } else {
+            feedback.innerHTML = "<span style='color:red;'>للأسف، يجب حل سؤالين على الأقل للنجاح.</span>";
+            area.innerHTML = `<button class="action-btn" style="background:#95a5a6" onclick="location.reload()">حاول مرة أخرى 🔄</button>`;
+        }
+    }
+    loadQuestion();
+</script>
+</body>
+</html>
