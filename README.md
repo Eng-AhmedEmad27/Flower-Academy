@@ -5,7 +5,7 @@ Flower Academy is a modern, highly responsive e-learning ecosystem inspired by p
 ------
 
 ### 🌐 Live Platform & Access
-* 🔗 Live Demo: 
+* 🔗 Live Demo: https://flower-academy-flame.vercel.app/
 
 * 📱 Responsive Design: Optimized for Seamless Performance on Desktop, Tablet & Mobile Devices.
 
