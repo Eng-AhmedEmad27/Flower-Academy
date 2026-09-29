@@ -16,7 +16,6 @@ Flower Academy is a modern, highly responsive e-learning ecosystem inspired by p
 ### | 🏠 Home Page |
 
   <img width="1280" height="600" alt="image" src="https://github.com/user-attachments/assets/f951e840-62dc-434f-91f5-cf2ef1e19dbc" />
-<img width="1280" height="851" alt="image" src="https://github.com/user-attachments/assets/4a31b09f-f047-4995-8dee-7fdaccdafde1" />
 
 ### |📚 Course Catalog & Discovery |
 
