@@ -11,7 +11,7 @@ Flower Academy is a modern, highly responsive e-learning ecosystem inspired by p
 
 ------
 
-### 📸 UI Preview
+# 📸 UI Preview
 
 ## | 🏠 Home Page |
 
